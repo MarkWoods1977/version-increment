@@ -15,11 +15,11 @@ public class VersionIncrementerTest {
         Version masterVersion = new Version(masterVersionString);
         Version localVersion = new Version(localVersionString);
 
-        VersionIncrementer versionIncrementer = new VersionIncrementer(masterVersion, localVersion);
+        VersionIncrementer versionIncrementer = new VersionIncrementer(masterVersionString, localVersionString);
 
-        Version incrementedVersion = versionIncrementer.increment();
+        String incrementedVersion = versionIncrementer.increment();
 
-        assertEquals("1.2.0",incrementedVersion.getVersionString());
+        assertEquals("1.2.0",incrementedVersion);
     }
 
     @Test
@@ -31,11 +31,11 @@ public class VersionIncrementerTest {
         Version masterVersion = new Version(masterVersionString);
         Version localVersion = new Version(localVersionString);
 
-        VersionIncrementer versionIncrementer = new VersionIncrementer(masterVersion, localVersion);
+        VersionIncrementer versionIncrementer = new VersionIncrementer(masterVersionString, localVersionString);
 
-        Version incrementedVersion = versionIncrementer.increment();
+        String incrementedVersion = versionIncrementer.increment();
 
-        assertEquals("2.0.0",incrementedVersion.getVersionString());
+        assertEquals("2.0.0",incrementedVersion);
     }
 
     @Test
@@ -47,11 +47,11 @@ public class VersionIncrementerTest {
         Version masterVersion = new Version(masterVersionString);
         Version localVersion = new Version(localVersionString);
 
-        VersionIncrementer versionIncrementer = new VersionIncrementer(masterVersion, localVersion);
+        VersionIncrementer versionIncrementer = new VersionIncrementer(masterVersionString, localVersionString);
 
-        Version incrementedVersion = versionIncrementer.increment();
+        String incrementedVersion = versionIncrementer.increment();
 
-        assertEquals("2.1.0",incrementedVersion.getVersionString());
+        assertEquals("2.1.0",incrementedVersion);
     }
 
     @Test
@@ -63,10 +63,10 @@ public class VersionIncrementerTest {
         Version masterVersion = new Version(masterVersionString);
         Version localVersion = new Version(localVersionString);
 
-        VersionIncrementer versionIncrementer = new VersionIncrementer(masterVersion, localVersion);
+        VersionIncrementer versionIncrementer = new VersionIncrementer(masterVersionString, localVersionString);
 
-        Version incrementedVersion = versionIncrementer.increment();
+        String incrementedVersion = versionIncrementer.increment();
 
-        assertEquals("2.0.1",incrementedVersion.getVersionString());
+        assertEquals("2.0.1",incrementedVersion);
     }
 }

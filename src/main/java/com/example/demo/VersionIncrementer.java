@@ -5,22 +5,22 @@ public class VersionIncrementer {
     private Version masterVersion;
     private Version localVersion;
 
-    public VersionIncrementer(Version masterVersion, Version localVersion) {
+    public VersionIncrementer(String masterVersionString, String localVersionString) {
 
-        this.masterVersion = masterVersion;
-        this.localVersion = localVersion;
+        this.masterVersion = new Version(masterVersionString);
+        this.localVersion = new Version(localVersionString);
     }
 
-    public Version increment() {
+    public String increment() {
 
         Version newVersion = new Version(localVersion.getVersionString());
 
         if(majorVersionIncreased() || patchVersionIncreased()) {
-            return newVersion;
+            return newVersion.getVersionString();
         }
 
         newVersion.incrementMinorVersion();
-        return newVersion;
+        return newVersion.getVersionString();
     }
 
     private boolean patchVersionIncreased() {
