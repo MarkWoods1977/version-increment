@@ -13,17 +13,12 @@ public class VersionIncrementer {
 
     public Version increment() {
 
-        if(majorVersionIncreased()) {
-            Version newVersion = new Version(localVersion.getVersionString());
-            return newVersion;
-        }
-
-        if(patchVersionIncreased()) {
-            Version newVersion = new Version(localVersion.getVersionString());
-            return newVersion;
-        }
-
         Version newVersion = new Version(localVersion.getVersionString());
+
+        if(majorVersionIncreased() || patchVersionIncreased()) {
+            return newVersion;
+        }
+
         newVersion.incrementMinorVersion();
         return newVersion;
     }
