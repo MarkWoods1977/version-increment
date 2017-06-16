@@ -12,11 +12,14 @@ public class VersionIncrementerTest {
         String masterVersionString = "1.1.0";
         String localVersionString = "1.1.0";
 
-        VersionIncrementer versionIncrementer = new VersionIncrementer(masterVersionString, localVersionString);
-
-        String incrementedVersion = versionIncrementer.increment();
+        String incrementedVersion = increment(masterVersionString, localVersionString);
 
         assertEquals("1.2.0",incrementedVersion);
+    }
+
+    private String increment(String masterVersionString, String localVersionString) {
+        VersionIncrementer versionIncrementer = new VersionIncrementer(masterVersionString, localVersionString);
+        return versionIncrementer.increment();
     }
 
     @Test
@@ -25,9 +28,7 @@ public class VersionIncrementerTest {
         String masterVersionString = "1.1.0";
         String localVersionString = "2.0.0";
 
-        VersionIncrementer versionIncrementer = new VersionIncrementer(masterVersionString, localVersionString);
-
-        String incrementedVersion = versionIncrementer.increment();
+        String incrementedVersion = increment(masterVersionString, localVersionString);
 
         assertEquals("2.0.0",incrementedVersion);
     }
@@ -38,9 +39,7 @@ public class VersionIncrementerTest {
         String masterVersionString = "2.0.0";
         String localVersionString = "2.0.0";
 
-        VersionIncrementer versionIncrementer = new VersionIncrementer(masterVersionString, localVersionString);
-
-        String incrementedVersion = versionIncrementer.increment();
+        String incrementedVersion = increment(masterVersionString, localVersionString);
 
         assertEquals("2.1.0",incrementedVersion);
     }
@@ -51,9 +50,7 @@ public class VersionIncrementerTest {
         String masterVersionString = "2.0.0";
         String localVersionString = "2.0.1";
 
-        VersionIncrementer versionIncrementer = new VersionIncrementer(masterVersionString, localVersionString);
-
-        String incrementedVersion = versionIncrementer.increment();
+        String incrementedVersion = increment(masterVersionString, localVersionString);
 
         assertEquals("2.0.1",incrementedVersion);
     }
