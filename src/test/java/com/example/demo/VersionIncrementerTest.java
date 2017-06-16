@@ -12,9 +12,6 @@ public class VersionIncrementerTest {
         String masterVersionString = "1.1.0";
         String localVersionString = "1.1.0";
 
-        Version masterVersion = new Version(masterVersionString);
-        Version localVersion = new Version(localVersionString);
-
         VersionIncrementer versionIncrementer = new VersionIncrementer(masterVersionString, localVersionString);
 
         String incrementedVersion = versionIncrementer.increment();
@@ -27,9 +24,6 @@ public class VersionIncrementerTest {
 
         String masterVersionString = "1.1.0";
         String localVersionString = "2.0.0";
-
-        Version masterVersion = new Version(masterVersionString);
-        Version localVersion = new Version(localVersionString);
 
         VersionIncrementer versionIncrementer = new VersionIncrementer(masterVersionString, localVersionString);
 
@@ -44,9 +38,6 @@ public class VersionIncrementerTest {
         String masterVersionString = "2.0.0";
         String localVersionString = "2.0.0";
 
-        Version masterVersion = new Version(masterVersionString);
-        Version localVersion = new Version(localVersionString);
-
         VersionIncrementer versionIncrementer = new VersionIncrementer(masterVersionString, localVersionString);
 
         String incrementedVersion = versionIncrementer.increment();
@@ -59,9 +50,6 @@ public class VersionIncrementerTest {
 
         String masterVersionString = "2.0.0";
         String localVersionString = "2.0.1";
-
-        Version masterVersion = new Version(masterVersionString);
-        Version localVersion = new Version(localVersionString);
 
         VersionIncrementer versionIncrementer = new VersionIncrementer(masterVersionString, localVersionString);
 
