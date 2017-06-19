@@ -19,14 +19,6 @@ public class Version {
         patchVersion = Integer.parseInt(versionSplit[2]);
     }
 
-
-    public String getVersionString() {
-
-        StringBuilder stringBuilder = new StringBuilder();
-        Formatter fmt = new Formatter(stringBuilder);
-        return fmt.format("%d.%d.%d", majorVersion, minorVersion, patchVersion).toString();
-    }
-
     public void incrementMinorVersion() {
         minorVersion ++;
     }
@@ -49,5 +41,24 @@ public class Version {
 
     public int getPatchVersion() {
         return patchVersion;
+    }
+
+    public boolean isHigherThan(Version version) {
+
+        if (majorVersion > version.majorVersion) return true;
+
+        if ((majorVersion == version.majorVersion) && (minorVersion > version.minorVersion)) return true;
+
+        if ((majorVersion == version.majorVersion) && (minorVersion == version.minorVersion) && (patchVersion > version.patchVersion)) return true;
+
+        return false;
+    }
+
+    @Override
+    public String toString() {
+
+        StringBuilder stringBuilder = new StringBuilder();
+        Formatter fmt = new Formatter(stringBuilder);
+        return fmt.format("%d.%d.%d", majorVersion, minorVersion, patchVersion).toString();
     }
 }

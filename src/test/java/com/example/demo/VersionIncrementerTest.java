@@ -17,7 +17,7 @@ public class VersionIncrementerTest {
         assertEquals("1.2.0",incrementedVersion);
     }
 
-    private String increment(String masterVersionString, String localVersionString) {
+    private String increment(String masterVersionString, String localVersionString) throws IncrementViolationException {
         VersionIncrementer versionIncrementer = new VersionIncrementer(masterVersionString, localVersionString);
         return versionIncrementer.increment();
     }
@@ -53,5 +53,14 @@ public class VersionIncrementerTest {
         String incrementedVersion = increment(masterVersionString, localVersionString);
 
         assertEquals("2.0.1",incrementedVersion);
+    }
+
+    @Test(expected = IncrementViolationException.class)
+    public void incrementPatchFails() throws Exception {
+
+        String masterVersionString = "1.3.0";
+        String localVersionString = "1.2.1";
+
+        increment(masterVersionString, localVersionString);
     }
 }

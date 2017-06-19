@@ -11,16 +11,20 @@ public class VersionIncrementer {
         this.localVersion = new Version(localVersionString);
     }
 
-    public String increment() {
+    public String increment() throws IncrementViolationException {
 
-        Version newVersion = new Version(localVersion.getVersionString());
+        if(masterVersion.isHigherThan(localVersion)) {
+            throw new IncrementViolationException();
+        }
+
+        Version newVersion = new Version(localVersion.toString());
 
         if(majorVersionIncreased() || patchVersionIncreased()) {
-            return newVersion.getVersionString();
+            return newVersion.toString();
         }
 
         newVersion.incrementMinorVersion();
-        return newVersion.getVersionString();
+        return newVersion.toString();
     }
 
     private boolean patchVersionIncreased() {
