@@ -13,18 +13,26 @@ public class VersionIncrementer {
 
     public String increment() throws IncrementViolationException {
 
-        if(masterVersion.isHigherThan(localVersion)) {
+        if(masterVersion.isHigherThan(localVersion) && isMajorOrPatchIncrement()) {
             throw new IncrementViolationException();
         }
 
-        Version newVersion = new Version(localVersion.toString());
-
         if(majorVersionIncreased() || patchVersionIncreased()) {
-            return newVersion.toString();
+            return localVersion.toString();
         }
 
+        Version newVersion = new Version(masterVersion.toString());
         newVersion.incrementMinorVersion();
         return newVersion.toString();
+    }
+
+    public boolean isMajorOrPatchIncrement() {
+
+        if (localVersion.getMajorVersion() > masterVersion.getMajorVersion()) return true;
+
+        if(localVersion.getPatchVersion() != 0) return true;
+
+        return false;
     }
 
     private boolean patchVersionIncreased() {
